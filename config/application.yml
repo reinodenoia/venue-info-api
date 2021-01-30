@@ -1,0 +1,7 @@
+:host: 127.0.0.1:3000
+
+:platforms:
+  :api:
+    :host: https://rails-code-challenge.herokuapp.com
+    :version: 1
+    :api_key: '34da2ea215823f4305193cf87b37a9b7'
