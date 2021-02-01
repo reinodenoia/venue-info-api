@@ -19,7 +19,7 @@ docker-compose up
 #### How to run the test suite
 
 ```
-docker-ps
+docker ps
 get the container_id from venue-info-api_web_1 image
 docker exec -it container_id bash 
 bundle exec rspec

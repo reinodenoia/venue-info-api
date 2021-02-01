@@ -4,7 +4,7 @@ class HashFormatValidator < ActiveModel::EachValidator
     record.errors[attribute] << 'invalid' unless valid_hash_format(value)
   end
 
-  private 
+  private
 
   def valid_hash_format(value)
     return false unless value
