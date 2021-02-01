@@ -1,6 +1,19 @@
 require 'rails_helper'
+require 'httparty'
 
 describe Platforms::Api do
+  context 'Validates external API viability' do
+    describe 'GET requests' do
+      %w[platform_a platform_b platform_c].each do |platform|
+        it 'should return OK' do
+          host = APP_CONFIG[:platforms][:api][:host]
+          response = HTTParty.get("#{host}/#{platform}/venue?api_key=34da2ea215823f4305193cf87b37a9b7")
+          expect(response.code).to eql(200)
+        end
+      end
+    end 
+  end
+
   context 'private methods' do
     it { expect(described_class.new.send('host')).not_to be nil }
 
@@ -10,19 +23,6 @@ describe Platforms::Api do
       result = "https://rails-code-challenge.herokuapp.com/platform_a/venue?api_key=abcdqwerty"
 
       expect(described_class.new.send('build_url', *[platform, api_key])).to eq result
-    end
-
-    describe '#build_request_params' do
-      it 'should return params without body' do
-        result = { headers: { 'Content-type' => 'application/json' }}
-        expect(described_class.new.send('build_request_params')).to eq result
-      end
-
-      it 'should return params with body' do
-        body = { name: 'name', address: 'address' }
-        result = { headers: { 'Content-type' => 'application/json' }, body: body }
-        expect(described_class.new.send('build_request_params', body)).to eq result
-      end
     end
   end
 end

@@ -34,6 +34,6 @@ class Platform < ApplicationRecord
   end
 
   def transform_category(category)
-    category_range.first + category
+    category_range.first + category.to_i
   end
 end

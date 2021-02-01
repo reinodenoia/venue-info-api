@@ -12,6 +12,7 @@ module Api
 
     def update
       @venue.full_update(update_params.to_h)
+      render_data(@venue)
     end
 
     private
