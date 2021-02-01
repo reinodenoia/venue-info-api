@@ -8,7 +8,7 @@ class HashFormatValidator < ActiveModel::EachValidator
 
   def valid_hash_format(value)
     return false unless value
-    eval(value).is_a?(Hash)
+    value.is_a?(Hash)
   rescue SyntaxError
     false
   end

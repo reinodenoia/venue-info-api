@@ -5,7 +5,7 @@ class CreateVenues < ActiveRecord::Migration[6.0]
       t.string  :address
       t.string  :additional_address
       t.float   :lat
-      t.float   :long
+      t.float   :lng
       t.integer :category
       t.boolean :closed 
       t.string  :hours, array: true, default: []

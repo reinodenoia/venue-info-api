@@ -3,15 +3,15 @@ platforms_params = [
     name: 'platform_a',
     fields: { name: :name,
               address: :address,
-              aditional_adress: nil,
+              additional_address: nil,
               lat: :lat,
-              long: :long,
+              lng: :lng,
               category: :category_id,
               closed: :closed, 
               hours: :hours,
               website: nil,
               phone: nil
-            }.to_s,
+            },
     category_range: [1000, 1200],
     hours_format: 'hour-hour|hour-hour|hour-hour|hour-hour|hour-hour|hour-hour|hour-hour'
   },
@@ -19,31 +19,31 @@ platforms_params = [
     name: 'platform_b',
     fields: { name: :name,
               address: :street_address,
-              aditional_adress: nil,
+              additional_address: nil,
               lat: :lat,
-              long: :long,
+              lng: :lng,
               category: :category_id,
               closed: :closed, 
               hours: :hours,
               website: nil,
               phone: nil
-            }.to_s,
+            },
     category_range: [2000, 2200],
     hours_format: 'Mon:hour-hour|Tue:hour-hour|Wed:hour-hour|Thu:hour-hour|Fri:hour-hour|Sat:hour-hour|Sun:hour-hour'
   },
   {
     name: 'platform_c',
     fields: { name: :name,
-      address: :street_address,
-      aditional_adress: nil,
+      address: :address_line_1,
+      additional_address: :address_line_2,
       lat: :lat,
-      long: :long,
-      category: :category_id,
+      lng: :lng,
+      category: :nil,
       closed: :closed, 
       hours: :hours,
-      website: nil,
-      phone: nil
-    }.to_s,
+      website: :website,
+      phone: :phone_number
+    },
     hours_format: 'hour-hour,hour-hour,hour-hour,hour-hour,hour-hour,hour-hour,hour-hour'
   }
 ]
@@ -60,7 +60,8 @@ end
 run('Cleaning database') do
   %w[assignment platform venue].each do |model|
     log "Cleaning #{model.pluralize} table..."
-    model.capitalize.constantize.delete_all
+    model.capitalize.constantize.destroy_all
+    ActiveRecord::Base.connection.reset_pk_sequence!(model.pluralize)
   end
 end
 

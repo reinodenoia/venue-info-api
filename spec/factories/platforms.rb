@@ -4,15 +4,15 @@ FactoryBot.define do
     fields { 
       { name: :name,
         address: :address,
-        aditional_adress: nil,
+        additional_address: nil,
         lat: :lat,
-        long: :long,
+        lng: :lng,
         category: :category_id,
         closed: :closed, 
         hours: :hours,
         website: nil,
         phone: nil
-      }.to_s
+      }
     }
     category_range { [1000, 1200] }
     hours_format { 'hour-hour|hour-hour|hour-hour|hour-hour|hour-hour|hour-hour|hour-hour' }

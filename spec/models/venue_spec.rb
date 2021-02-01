@@ -13,7 +13,7 @@ describe Venue, type: :model do
     end
 
     context 'is not valid without' do
-      %w[name address lat long closed category].each do |field|
+      %w[name address lat lng closed category].each do |field|
         it "a #{field}" do
           venue.send("#{field}=", nil)
           expect(venue).not_to be_valid
