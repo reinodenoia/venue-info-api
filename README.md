@@ -6,7 +6,8 @@
 * Database: postgresql
 * Testing gem: rspec
 
-* Deployment instructions
+#### Deployment instructions
+
 The service will be up and running with the database created, its migrations executed and data populated.
 ```
 clone the repository 
@@ -15,7 +16,8 @@ docker-compose build
 docker-compose up
 ```
 
-* How to run the test suite
+#### How to run the test suite
+
 ```
 docker-ps
 get the container_id from venue-info-api_web_1 image
